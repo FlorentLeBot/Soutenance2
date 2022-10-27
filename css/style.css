@@ -1,0 +1,63 @@
+/* SOMMAIRE :
+- LES FONTS
+- LES VARIABLES CSS
+- HEADER
+- MAIN : 
+- FOOTER
+*/
+
+/* LES FONTS */
+
+/* roboto-regular - latin */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/roboto-regular/roboto-v30-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('./fonts/roboto-regular/roboto-v30-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('./fonts/roboto-regular/roboto-v30-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('./fonts/roboto-regular/roboto-v30-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('./fonts/roboto-regular/roboto-v30-latin-regular.svg#Roboto') format('svg');
+        /* Legacy iOS */
+}
+
+/* LES VARIABLES CSS */
+
+:root{
+    --gray: #dddddd;
+    --black: #000;
+    --white: #fff;
+    --roboto-regular: 'Roboto';
+}
+
+/* STYLE COMMUN A TOUTES LES PAGES */
+
+body{
+    font-family: var(--roboto-regular);
+    background: var(--gray);
+}
+h1{
+    font-size: 1.2rem;
+}
+a{
+    color: var(--white);
+}
+
+/* LE HEADER */
+
+.logo{
+    width: 20px;
+    height: 20px;
+}
+/* MAIN */
+/* FOOTER */
+
+
+
+
+
