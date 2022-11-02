@@ -10,54 +10,285 @@
 
 /* roboto-regular - latin */
 @font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    src: url('./fonts/roboto-regular/roboto-v30-latin-regular.eot');
-    /* IE9 Compat Modes */
-    src: local(''),
-        url('./fonts/roboto-regular/roboto-v30-latin-regular.woff2') format('woff2'),
-        /* Super Modern Browsers */
-        url('./fonts/roboto-regular/roboto-v30-latin-regular.woff') format('woff'),
-        /* Modern Browsers */
-        url('./fonts/roboto-regular/roboto-v30-latin-regular.ttf') format('truetype'),
-        /* Safari, Android, iOS */
-        url('./fonts/roboto-regular/roboto-v30-latin-regular.svg#Roboto') format('svg');
-        /* Legacy iOS */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/roboto-regular/roboto-v30-latin-regular.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../fonts/roboto-regular/roboto-v30-latin-regular.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../fonts/roboto-regular/roboto-v30-latin-regular.woff') format('woff'),
+    /* Modern Browsers */
+    url('../fonts/roboto-regular/roboto-v30-latin-regular.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../fonts/roboto-regular/roboto-v30-latin-regular.svg#Roboto') format('svg');
+  /* Legacy iOS */
+}
+
+/* fall-in-love */
+@font-face {
+  font-family: 'fall_in_loveregular';
+  src: url('../fonts/fall-in-love/fall_in_love-webfont.woff2') format('woff2'),
+       url('../fonts/fall-in-love/fall_in_love-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
 
 /* LES VARIABLES CSS */
 
-:root{
-    --gray: #dddddd;
-    --black: #000;
-    --white: #fff;
-    --roboto-regular: 'Roboto';
+:root {
+  --gray: #dddddd;
+  --black: #000;
+  --white: #fff;
+  --color-1: #dfb4ad;
+  --color-2: #f0aaac;
+  --color-3: #7e766e;
+  --color-4: #e6e3e0;
+  --roboto-regular: 'Roboto';
 }
 
 /* STYLE COMMUN A TOUTES LES PAGES */
 
-body{
-    font-family: var(--roboto-regular);
-    background: var(--gray);
+* {
+  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-h1{
-    font-size: 1.2rem;
+
+body {
+  font-family: var(--roboto-regular); 
 }
-a{
-    color: var(--white);
+
+h1 {
+  font-size: 1.6rem;
+  color: var(--white);
+  
+  font-family: 'fall_in_loveregular';
+ 
+}
+
+a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.container {
+  max-width: 1200px;
 }
 
 /* LE HEADER */
 
-.logo{
-    width: 20px;
-    height: 20px;
+
+#main-header {
+  background: url(../images/fond-top.jpg) no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+  margin: 0 auto;
+
 }
+
+.menu-wrap {
+  position: fixed;
+  margin: 5px;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.menu-wrap .toggler {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3000;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+}
+
+.menu-wrap .hamburger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2000;
+  width: 40px;
+  height: 40px;
+  opacity: 0.5;
+  background: var(--color-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* hamburger line */
+
+.menu-wrap .hamburger>div {
+  position: relative;
+  width: 30px;
+  height: 2px;
+  background: var(--color-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease-in-out;
+}
+
+/* top and bottom line */
+
+.menu-wrap .hamburger>div::before,
+.menu-wrap .hamburger>div::after {
+  content: "";
+  position: absolute;
+  z-index: 20;
+  top: -10px;
+  width: 30px;
+  height: 2px;
+  background: inherit;
+}
+
+/* moves line down */
+
+.menu-wrap .hamburger>div:after {
+  top: 10px;
+}
+
+/* toggler animate */
+
+.menu-wrap .toggler:checked+.hamburger>div {
+  transform: rotate(135deg);
+}
+
+/* turn lines into X */
+
+.menu-wrap .toggler:checked+.hamburger>div::before,
+.menu-wrap .toggler:checked+.hamburger>div::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+/* rotate on hover when checked */
+
+.menu-wrap .toggler:checked+.hamburger>div {
+  transform: rotate(225deg);
+}
+
+/* show menu */
+
+.menu-wrap .toggler:checked~.menu {
+  visibility: visible;
+}
+
+.menu-wrap .toggler:checked~.menu>div {
+  transform: scale(1);
+  transition-duration: var(--menu-speed);
+}
+
+.menu-wrap .toggler:checked~.menu>div>div {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-wrap .menu .menu-container {
+  background-color: var(--color-2);
+  width: 100%;
+  height: 100%;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------- */
+
+/* le menu principal */
+
+.menu-wrap .menu #main-menu {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu #main-menu ul li {
+  padding: 10px;
+}
+
+.menu-wrap .menu #main-menu ul li a {
+  color: var(--black);
+  font-size: 2rem;
+}
+
+/* contenu du header */
+
+#content-header {
+  width: 100%;
+  text-align: center;
+}
+
+#btns-header {
+  display: flex;
+  justify-content: center;
+}
+
+#btns-header .btn {
+  padding: 5px 15px ;
+  font-size: 1.4rem
+}
+
+.name-site {
+  padding: 1rem;
+}
+
+.logo-site {
+  width: 90px;
+  margin: 0 auto;
+  opacity: 0.5;
+}
+
+#search {
+  width: 240px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  margin: 1rem;
+  background-color: #F2DCDF;
+  
+}
+
+label .fa-magnifying-glass{
+  margin-left:-250px;
+  margin-bottom: -5px;
+}
+
+#search::placeholder{
+  text-align: center;
+}
+
 /* MAIN */
 /* FOOTER */
-
-
-
-
-
